@@ -1,0 +1,12 @@
+
+.header {
+    text-align: center;
+    font-size: 1rem;
+    font-family: Helvetica;
+    margin-top: 2.5%;
+    text-rendering: optimizeLegibility;
+}
+
+.title {
+    color: #eeeeee;
+}

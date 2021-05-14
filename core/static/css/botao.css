@@ -1,0 +1,28 @@
+
+.botao {
+    display: block;
+    margin-top: 2.5%;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: fit-content;
+    width: 10%;
+    padding: 20px;
+    border: #7189FF 2px solid;
+    background-color: #624CAB;
+    color: #eeeeee;
+    border-radius: 5px;
+    transition: 0.4s;
+    font-size: 1rem;
+}
+
+.botao:hover {
+    color: #eeeeee;
+    background-color: #7189FF;
+    border: #A0DDFF 2px solid;
+    cursor: pointer;
+}
+
+.botao:active {
+    color: black;
+    background-color: #A0DDFF;
+}

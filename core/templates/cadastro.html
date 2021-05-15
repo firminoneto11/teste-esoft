@@ -6,10 +6,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static './css/header.css' %}">
+    <link rel="stylesheet" href="{% static './css/reset.css' %}">
+    <link rel="stylesheet" href="{% static './css/address_form.css' %}">
+    <link rel="stylesheet" href="{% static './css/botao.css' %}">
     <title>E-Soft Cadastro de Endereços</title>
 </head>
 
 <body>
+
+    <header class="header">
+        <h1 class="title">Cadastrar Endereço</h1>
+    </header>
+
+    <form class="form" action="{% url 'cadastro' %}" method="post">
+        {% csrf_token %}
+        <label for="rua"></label>
+        <input type="text" placeholder="Nome da rua e número">
+
+        <label for="bairro"></label>
+        <input type="text" placeholder="Bairro">
+
+        <label for="cidade"></label>
+        <input type="text" placeholder="Cidade">
+
+        <label for="uf"></label>
+        <input type="text" placeholder="Estado|UF">
+
+        <label for="complemento"></label>
+        <input type="text" placeholder="Complemento">
+
+        <label for="cep"></label>
+        <input type="text" placeholder="CEP">
+
+        <button class="botao" type="submit">Cadastrar</button>
+    </form>
+
+    <form action="{% url 'home' %}" method="get">
+        <button class="botao" type="submit">Voltar</button>
+    </form>
 
 </body>
 

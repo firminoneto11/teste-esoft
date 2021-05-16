@@ -20,31 +20,35 @@
 
     <main>
 
-        <table class="table">
+        <div class="table-container">
+            <table class="table">
 
-            <thead>
-                <th>Rua</th>
-                <th>Bairro</th>
-                <th>Cidade</th>
-                <th>Estado</th>
-                <th>Complemento</th>
-                <th>CEP</th>
-            </thead>
+                <thead>
+                    <tr>
+                        <th>Rua</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th>
+                        <th>Estado</th>
+                        <th>Complemento</th>
+                        <th>CEP</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                {% for endereco in stored_addresses %}
-                <tr>
-                    <td>{{ endereco.rua }}</td>
-                    <td>{{ endereco.bairro }}</td>
-                    <td>{{ endereco.cidade }}</td>
-                    <td>{{ endereco.estado }}</td>
-                    <td>{{ endereco.complemento }}</td>
-                    <td>{{ endereco.cep }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
+                <tbody>
+                    {% for endereco in stored_addresses %}
+                    <tr>
+                        <td>{{ endereco.rua }}</td>
+                        <td>{{ endereco.bairro }}</td>
+                        <td>{{ endereco.cidade }}</td>
+                        <td>{{ endereco.estado }}</td>
+                        <td>{{ endereco.complemento }}</td>
+                        <td>{{ endereco.cep }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
 
-        </table>
+            </table>
+        </div>
 
         <form action="{% url 'cadastro' %}" method="get">
             <button class="botao" type="submit">Cadastrar novo endereço</button>

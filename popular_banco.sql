@@ -1,0 +1,10 @@
+INSERT INTO "main"."core_enderecos" ("rua", "bairro", "cidade", "complemento", "cep", "estado") VALUES ('Rua Brejões', 'Angelim', 'Teresina', '', '64034565', 'Piauí');
+INSERT INTO "main"."core_enderecos" ("rua", "bairro", "cidade", "complemento", "cep", "estado") VALUES ('Beco H', 'Sarandi', 'Porto Alegre', '(Vl Nazareth)', '91060501', 'Rio Grande do Sul');
+INSERT INTO "main"."core_enderecos" ("rua", "bairro", "cidade", "complemento", "cep", "estado") VALUES ('QE 2 Bloco C', 'Guará I', 'Brasília', '', '71010031', 'Distrito Federal');
+INSERT INTO "main"."core_enderecos" ("rua", "bairro", "cidade", "complemento", "cep", "estado") VALUES ('Rua Coronel João Mendes', 'Centro', 'Feira de Santana', '', '44002424', 'Bahia');
+INSERT INTO "main"."core_enderecos" ("rua", "bairro", "cidade", "complemento", "cep", "estado") VALUES ('Rua São Francisco', 'Santo Antônio', 'Teresina', '(Vl S Fco)', '64032310', 'Piauí');
+INSERT INTO "main"."core_enderecos" ("rua", "bairro", "cidade", "complemento", "cep", "estado") VALUES ('Rua Projetada Quadra D', 'Jardim Libanês', 'São Luís', '', '65067357', 'Maranhão');
+INSERT INTO "main"."core_enderecos" ("rua", "bairro", "cidade", "complemento", "cep", "estado") VALUES ('Rua José Abraham Diaz', 'Vila Nova', 'Porto Alegre', '(Est Cristiano Kraemer)', '91750091', 'Rio Grande do Sul');
+INSERT INTO "main"."core_enderecos" ("rua", "bairro", "cidade", "complemento", "cep", "estado") VALUES ('Quadra Três', 'Nova Marabá', 'Marabá', '(Fl.12)', '68510110', 'Pará');
+INSERT INTO "main"."core_enderecos" ("rua", "bairro", "cidade", "complemento", "cep", "estado") VALUES ('Rua Capão da Canoa', 'Três Marias', 'Porto Velho', 'de 6984/6985 ao fim', '76812440', 'Rondônia');
+INSERT INTO "main"."core_enderecos" ("rua", "bairro", "cidade", "complemento", "cep", "estado") VALUES ('Rua Helena Lira da Silva', 'Ouro Preto', 'Olinda', '', '53330320', 'Pernambuco');

@@ -28,7 +28,6 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0.5%;
-    margin-top: 2.5%;
     padding: 20px;
     border: black solid 2px;
     border-radius: 5px;
@@ -47,4 +46,17 @@
     border: blue solid 2px;
     border-radius: 5px;
     outline: none;
+}
+
+.label {
+    display: block;
+    width: 50%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Helvetica;
+    font-size: 1rem;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    color: black;
 }

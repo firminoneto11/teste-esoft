@@ -8,3 +8,7 @@
 body {
     background-image: linear-gradient(to left, #624CAB, #C1CEFE);
 }
+
+html {
+    scroll-behavior: smooth;
+}

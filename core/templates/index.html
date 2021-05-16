@@ -32,14 +32,16 @@
             </thead>
 
             <tbody>
+                {% for endereco in stored_addresses %}
                 <tr>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
-                    <td>teste</td>
+                    <td>{{ endereco.rua }}</td>
+                    <td>{{ endereco.bairro }}</td>
+                    <td>{{ endereco.cidade }}</td>
+                    <td>{{ endereco.estado }}</td>
+                    <td>{{ endereco.complemento }}</td>
+                    <td>{{ endereco.cep }}</td>
                 </tr>
+                {% endfor %}
             </tbody>
 
         </table>

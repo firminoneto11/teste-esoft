@@ -21,11 +21,11 @@ const any_return = (ceperson) => {
 const valido = (cep_inputado) => {
     // Função que irá validar o CEP e retornar um valor booleano
     const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    if (inputted_string.length !== 8) {
+    if (cep_inputado.length !== 8) {
         return false
     }
-    for (let index in inputted_string) {
-        if (numbers.includes(inputted_string[index])) {
+    for (let index in cep_inputado) {
+        if (numbers.includes(cep_inputado[index])) {
             continue
         } else {
             return false
@@ -37,39 +37,62 @@ const valido = (cep_inputado) => {
     return false
 }
 
-// Selecionando os elementos dos inputs pelo id
-const formulario = document.getElementById('form')
-const rua = document.getElementById('rua')
-const bairro = document.getElementById('bairro')
-const cidade = document.getElementById('cidade')
-const uf = document.getElementById('uf')
-const cep = document.getElementById('cep')
-
 // Editando o event listener
-formulario.addEventListener('submit', (event) => {
+document.getElementById('form').addEventListener('submit', (event) => {
+    // Selecionando os elementos dos inputs pelo id
+    const rua = document.getElementById('rua')
+    const bairro = document.getElementById('bairro')
+    const cidade = document.getElementById('cidade')
+    const cep = document.getElementById('cep')
+    // Valor do dropdown da tag select
+    const uf = document.getElementById('uf')
+    const selected_uf = uf.options[uf.selectedIndex].value
+    // Array para checar erros
     const errors = []
-    if (rua.value === '' || rua.value === null) {
+    // Logica
+    if (rua.value === '') {
         errors.push('err')
-    } else if (bairro.value === '' || bairro.value === null) {
+    }
+    if (bairro.value === '') {
         errors.push('err')
-    } else if (cidade.value === '' || cidade.value === null) {
+    }
+    if (cidade.value === '') {
         errors.push('err')
-    } else if (uf.value === 'none' || uf.value === null) {
+    }
+    if (selected_uf === 'NaS') {
         errors.push('err')
     }
 
-    if (valido(cep) === false) {
+    /*
+    -> Resolver esse bgl do cep
+    if (valido(cep.value)) {
+        // do nothing
+    } else {
         errors.push('err')
     }
+    */
 
+    // Disparando o Sweet Alert alert quando os dados não passam nas validações.
     if (errors.length !== 0) {
         event.preventDefault()
-        alert('Preencha o formulário direito bixo!')
+        swal({
+            title: "Falha no cadastro!",
+            text: "Verifique novamente os campos que estão em vermelho. Eles não podem estar em branco e o CEP deve ser válido.",
+            icon: "error",
+            dangerMode: true
+        })
+        // Disparando o SWeet Alert quando os dados passam nas validações.
     } else {
-        const output = document.getElementById('error_or_success')
-        let new_p = document.createElement('p')
-        new_p.innerHTML = 'Endereço cadastrado com sucesso!'
-        new_p.classList.add('success')
-        output.appendChild(new_p)
+        event.preventDefault()
+        swal({
+            title: "Cadastro realizado com sucesso!",
+            text: "O endereço foi salvo no banco de dados.",
+            icon: "success",
+        })
+            .then((value) => {
+                if (value === null || value == true) {
+                    document.getElementById('form').submit()
+                }
+            })
     }
 })

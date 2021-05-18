@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from core.engine.validate_form import is_valid, country_uf
 from core.models import Enderecos
 
@@ -24,14 +24,14 @@ def cadastro(request):
                 form_fields['estado'] = country_uf.get(value)
             elif key == 'complemento':
                 form_fields['complemento'] = value
-            else:
+            elif key == 'cep':
                 form_fields['cep'] = value
 
         if is_valid(form_fields):
             new_endereco = Enderecos(**form_fields)
             new_endereco.save()
             request.method = 'GET'
-            return render(request, 'cadastro.html')
+            return redirect(index)
         else:
             request.method = 'GET'
             return render(request, 'cadastro.html')

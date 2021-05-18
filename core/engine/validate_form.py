@@ -41,7 +41,9 @@ def is_valid(inputted):
     for key in inputted.keys():
 
         if key != 'complemento':
-            if len(inputted.get(key)) == 0:
+            if inputted.get(key) is None:
+                return False
+            elif len(inputted.get(key)) == 0:
                 return False
             else:
                 pass

@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="{% static './css/address_form.css' %}">
     <link rel="stylesheet" href="{% static './css/botao.css' %}">
     <link rel="stylesheet" href="{% static './css/select.css' %}">
+    <!--Sweet Alert Script-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Title-->
     <title>E-Soft Cadastro de Endereços</title>
 </head>
 
@@ -37,7 +40,7 @@
         <label for="uf" class="label">Escolha um dos estados abaixo (*)</label>
         <div class="select">
             <select id="uf" name="uf" class="select">
-                <option value="none">-- Selecione um estado (*) --</option>
+                <option value="NaS">-- Selecione um estado (*) --</option>
                 <option value="RO">Rondônia</option>
                 <option value="AC">Acre</option>
                 <option value="AM">Amazonas</option>

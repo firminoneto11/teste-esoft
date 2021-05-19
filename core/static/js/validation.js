@@ -2,54 +2,55 @@ const any_return = (ceperson) => {
     // Chamando a API do ViaCep para checar se o cep existe
     const url = `https://viacep.com.br/ws/${ceperson}/json/`
     const request = new XMLHttpRequest()
+    let checked
     request.open('GET', url)
     request.send()
     request.onload = () => {
         if (request.status === 200) {
             let response = JSON.parse(request.response)
             if (response.length !== 10) {
-                return false
+                checked = false
+                request.abort()
             } else {
-                return true
+                checked = true
+                request.abort()
             }
         } else {
-            return false
+            checked = false
+            request.abort()
         }
     }
+    return checked
 }
 
 const valido = (cep_inputado) => {
-    // Função que irá validar o CEP e retornar um valor booleano
-    const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    if (cep_inputado.length !== 8) {
+    if (isNaN(cep_inputado) || cep_inputado.length !== 8) {
+        return false
+    } else if (any_return(cep_inputado) === false) {
         return false
     }
-    for (let index in cep_inputado) {
-        if (numbers.includes(cep_inputado[index])) {
-            continue
-        } else {
-            return false
-        }
-    }
-    if (any_return(cep_inputado)) {
-        return true
-    }
-    return false
+    return true
 }
 
 // Editando o event listener
 document.getElementById('form').addEventListener('submit', (event) => {
+    // Parando a ação default do form
+    event.preventDefault()
+
     // Selecionando os elementos dos inputs pelo id
     const rua = document.getElementById('rua')
     const bairro = document.getElementById('bairro')
     const cidade = document.getElementById('cidade')
     const cep = document.getElementById('cep')
+
     // Valor do dropdown da tag select
     const uf = document.getElementById('uf')
     const selected_uf = uf.options[uf.selectedIndex].value
+
     // Array para checar erros
     const errors = []
-    // Logica
+
+    // Lógica de validação de erros
     if (rua.value === '') {
         errors.push('err')
     }
@@ -63,18 +64,14 @@ document.getElementById('form').addEventListener('submit', (event) => {
         errors.push('err')
     }
 
-    /*
-    -> Resolver esse bgl do cep
-    if (valido(cep.value)) {
-        // do nothing
-    } else {
+    // still bugged
+    if (valido(cep.value) === false) {
         errors.push('err')
+        console.log(valido(cep.value))
     }
-    */
 
     // Disparando o Sweet Alert alert quando os dados não passam nas validações.
     if (errors.length !== 0) {
-        event.preventDefault()
         swal({
             title: "Falha no cadastro!",
             text: "Verifique novamente os campos que estão em vermelho. Eles não podem estar em branco e o CEP deve ser válido.",
@@ -83,7 +80,6 @@ document.getElementById('form').addEventListener('submit', (event) => {
         })
         // Disparando o SWeet Alert quando os dados passam nas validações.
     } else {
-        event.preventDefault()
         swal({
             title: "Cadastro realizado com sucesso!",
             text: "O endereço foi salvo no banco de dados.",

@@ -1,32 +1,17 @@
-const any_return = (ceperson) => {
-    // Chamando a API do ViaCep para checar se o cep existe
-    const url = `https://viacep.com.br/ws/${ceperson}/json/`
-    const request = new XMLHttpRequest()
-    let checked
-    request.open('GET', url)
-    request.send()
-    request.onload = () => {
-        if (request.status === 200) {
-            let response = JSON.parse(request.response)
-            if (response.length !== 10) {
-                checked = false
-                request.abort()
-            } else {
-                checked = true
-                request.abort()
-            }
-        } else {
-            checked = false
-            request.abort()
-        }
+async function test_cep(cep) {
+    const url = `https://viacep.com.br/ws/${cep}/json/`
+    const response = await fetch(url)
+    const response_json = await response.json()
+    if (response_json.length !== 10) {
+        return false
     }
-    return checked
+    return true
 }
 
 const valido = (cep_inputado) => {
     if (isNaN(cep_inputado) || cep_inputado.length !== 8) {
         return false
-    } else if (any_return(cep_inputado) === false) {
+    } else if (test_cep(cep_inputado) === false) {
         return false
     }
     return true
@@ -53,22 +38,39 @@ document.getElementById('form').addEventListener('submit', (event) => {
     // Lógica de validação de erros
     if (rua.value === '') {
         errors.push('err')
+        if (rua.className === 'text') {
+            rua.classList.remove('text')
+            rua.classList.add('error')
+        }
     }
     if (bairro.value === '') {
         errors.push('err')
+        if (bairro.className === 'text') {
+            bairro.classList.remove('text')
+            bairro.classList.add('error')
+        }
     }
     if (cidade.value === '') {
         errors.push('err')
+        if (cidade.className === 'text') {
+            cidade.classList.remove('text')
+            cidade.classList.add('error')
+        }
     }
     if (selected_uf === 'NaS') {
         errors.push('err')
+        if (document.getElementById('selectDiv').className === 'select') {
+            document.getElementById('selectDiv').classList.remove('select')
+            document.getElementById('selectDiv').classList.add('select_error')
+        }
     }
 
     // still bugged
+    /*
     if (valido(cep.value) === false) {
         errors.push('err')
-        console.log(valido(cep.value))
     }
+    */
 
     // Disparando o Sweet Alert alert quando os dados não passam nas validações.
     if (errors.length !== 0) {
@@ -80,6 +82,19 @@ document.getElementById('form').addEventListener('submit', (event) => {
         })
         // Disparando o SWeet Alert quando os dados passam nas validações.
     } else {
+        const ui = [rua, bairro, cidade, cep]
+        for (let index in ui) {
+            if (ui[index].className === 'text') {
+                continue
+            } else {
+                ui[index].classList.remove('error')
+                ui[index].classList.add('text')
+            }
+            if (uf.className === 'select_error') {
+                uf.classList.remove('select_error')
+                uf.classList.add('select')
+            }
+        }
         swal({
             title: "Cadastro realizado com sucesso!",
             text: "O endereço foi salvo no banco de dados.",

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static './css/address_form.css' %}">
     <link rel="stylesheet" href="{% static './css/botao.css' %}">
     <link rel="stylesheet" href="{% static './css/select.css' %}">
+    <link rel="stylesheet" href="{% static './css/error.css' %}">
     <!--Sweet Alert Script-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!--Title-->
@@ -27,16 +28,16 @@
         {% csrf_token %}
 
         <label for="rua" class="label">Nome da rua com número (*)</label>
-        <input id="rua" name="rua" type="text" placeholder="Nome da rua e número (*)">
+        <input id="rua" class="text" name="rua" type="text" placeholder="Nome da rua e número (*)">
 
         <label for="bairro" class="label">Nome do bairro (*)</label>
-        <input id="bairro" name="bairro" type="text" placeholder="Bairro (*)">
+        <input id="bairro" class="text" name="bairro" type="text" placeholder="Bairro (*)">
 
         <label for="cidade" class="label">Nome da cidade (*)</label>
-        <input id="cidade" name="cidade" type="text" placeholder="Cidade (*)">
+        <input id="cidade" class="text" name="cidade" type="text" placeholder="Cidade (*)">
 
         <label for="uf" class="label">Escolha um dos estados abaixo (*)</label>
-        <div class="select">
+        <div id="selectDiv" class="select">
             <select id="uf" name="uf" class="select">
                 <option value="NaS">-- Selecione um estado (*) --</option>
                 <option value="RO">Rondônia</option>
@@ -70,10 +71,10 @@
         </div>
 
         <label for="complemento" class="label">Complemento (Opcional)</label>
-        <input id="complemento" name="complemento" type="text" placeholder="Complemento">
+        <input id="complemento" class="text" name="complemento" type="text" placeholder="Complemento">
 
         <label for="cep" class="label">Número do CEP | Somente números (*)</label>
-        <input id="cep" name="cep" type="text" placeholder="CEP (*)">
+        <input id="cep" class="text" name="cep" type="text" placeholder="CEP (*)">
 
         <button class="botao" style="background-image: linear-gradient(to left, #624CAB, #7189FF);"
             type="submit">Cadastrar</button>

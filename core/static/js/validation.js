@@ -1,3 +1,4 @@
+/*
 async function test_cep(cep) {
     const url = `https://viacep.com.br/ws/${cep}/json/`
     const response = await fetch(url)
@@ -7,11 +8,10 @@ async function test_cep(cep) {
     }
     return true
 }
+*/
 
 const valido = (cep_inputado) => {
     if (isNaN(cep_inputado) || cep_inputado.length !== 8) {
-        return false
-    } else if (test_cep(cep_inputado) === false) {
         return false
     }
     return true
@@ -65,12 +65,19 @@ document.getElementById('form').addEventListener('submit', (event) => {
         }
     }
 
-    // still bugged
     /*
+    Tentei realizar a implementação da validação mais profunda diretamente no frontent, mas sem sucesso. Este algoritmo valida o CEP
+    pelo fato de o mesmo ser um número e ter os 8 dígitos. O backend faz a chamada da API para fazer a validação final, mas podem ocor
+    rer casos em que a página irá informar que o conteúdo foi cadastrado com sucesso mesmo que o backend não o faça.
+    */
+
     if (valido(cep.value) === false) {
         errors.push('err')
+        if (cep.className === 'text') {
+            cep.classList.remove('text')
+            cep.classList.add('error')
+        }
     }
-    */
 
     // Disparando o Sweet Alert alert quando os dados não passam nas validações.
     if (errors.length !== 0) {
@@ -90,9 +97,9 @@ document.getElementById('form').addEventListener('submit', (event) => {
                 ui[index].classList.remove('error')
                 ui[index].classList.add('text')
             }
-            if (uf.className === 'select_error') {
-                uf.classList.remove('select_error')
-                uf.classList.add('select')
+            if (document.getElementById('selectDiv').className === 'select_error') {
+                document.getElementById('selectDiv').classList.remove('select_error')
+                document.getElementById('selectDiv').classList.add('select')
             }
         }
         swal({

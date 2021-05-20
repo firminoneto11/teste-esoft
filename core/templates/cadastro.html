@@ -12,8 +12,11 @@
     <link rel="stylesheet" href="{% static './css/botao.css' %}">
     <link rel="stylesheet" href="{% static './css/select.css' %}">
     <link rel="stylesheet" href="{% static './css/error.css' %}">
+    <link rel="stylesheet" href="{% static './css/footer.css' %}">
     <!--Sweet Alert Script-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/5519e027be.js" crossorigin="anonymous"></script>
     <!--Title-->
     <title>E-Soft Cadastro de Endereços</title>
 </head>
@@ -81,6 +84,19 @@
     </form>
 
     <a href="{% url 'home' %}" class="voltar">Voltar</a>
+
+    <footer>
+        <p class="footer">Desenvolvido por <a class="link" href="https://github.com/firminoneto11"
+                target="_blank">Firmino
+                Neto</a></p>
+        <div class="links">
+            <a href="https://www.linkedin.com/in/firmino-neto-4a0010158/" target="_blank"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/firminoneto11" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/firminoneto11/" target="_blank"><i
+                    class="fab fa-instagram-square"></i></a>
+        </div>
+    </footer>
 
     <!--Seção de validação de inputs-->
     <script src="{% static './js/validation.js' %}"></script>

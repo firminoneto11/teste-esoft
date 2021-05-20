@@ -14,7 +14,9 @@
 .table-container {
     height: 500px;
     overflow: auto;
-    width: auto;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 2.5%;
     border: #C1CEFE solid 1px;
     border-radius: 5px;
@@ -22,8 +24,6 @@
 
 .table {
     animation: transitionIn 1s;
-    margin-left: auto;
-    margin-right: auto;
     border-collapse: collapse;
     text-align: center;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -31,6 +31,7 @@
     font-family: Helvetica;
     border: #C1CEFE solid 1px;
     border-radius: 5px;
+    width: 100%;
 }
 
 .table tbody tr {

@@ -45,4 +45,4 @@
 <hr>
 
 <div align='center'><h2>👾 Autor 👾</h2></div>
-<p>Feito com ❤ por <a href=''>Firmino Neto</a>.</p>
+<p>Feito com ❤ por <a href='https://github.com/firminoneto11'>Firmino Neto</a>.</p>

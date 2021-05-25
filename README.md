@@ -1,11 +1,14 @@
 <!--<div align='center'></div>-->
 
+<div align='center'>
+
 ![GitHub](https://img.shields.io/github/license/firminoneto11/teste-esoft?style=for-the-badge)
 ![GitHub repo size](https://img.shields.io/github/repo-size/firminoneto11/teste-esoft?style=for-the-badge)
 ![GitHub top language](https://img.shields.io/github/languages/top/firminoneto11/teste-esoft?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/firminoneto11/teste-esoft?style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/firminoneto11/teste-esoft?style=for-the-badge)
 ![Website](https://img.shields.io/website?down_message=Offline&style=for-the-badge&up_message=Online&url=https%3A%2F%2Fesoft.herokuapp.com%2F)
+</div>
 
 <div align='center'>
     <h1>Teste Esoft</h1>

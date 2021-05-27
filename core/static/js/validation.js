@@ -1,24 +1,28 @@
-/*
 async function test_cep(cep) {
     const url = `https://viacep.com.br/ws/${cep}/json/`
     const response = await fetch(url)
     const response_json = await response.json()
-    if (response_json.length !== 10) {
-        return false
+    for (let att in response_json) {
+        if (att === 'erro') {
+            return false
+        }
     }
     return true
 }
-*/
 
-const valido = (cep_inputado) => {
+const valido = async (cep_inputado) => {
     if (isNaN(cep_inputado) || cep_inputado.length !== 8) {
         return false
     }
-    return true
+    let checking = await test_cep(cep_inputado)
+    if (checking) {
+        return true
+    }
+    return false
 }
 
 // Editando o event listener
-document.getElementById('form').addEventListener('submit', (event) => {
+document.getElementById('form').addEventListener('submit', async (event) => {
     // Parando a ação default do form
     event.preventDefault()
 
@@ -65,13 +69,7 @@ document.getElementById('form').addEventListener('submit', (event) => {
         }
     }
 
-    /*
-    Tentei realizar a implementação da validação mais profunda diretamente no frontent, mas sem sucesso. Este algoritmo valida o CEP
-    pelo fato de o mesmo ser um número e ter os 8 dígitos. O backend faz a chamada da API para fazer a validação final, mas podem ocor
-    rer casos em que a página irá informar que o conteúdo foi cadastrado com sucesso mesmo que o backend não o faça.
-    */
-
-    if (valido(cep.value) === false) {
+    if (await valido(cep.value) === false) {
         errors.push('err')
         if (cep.className === 'text') {
             cep.classList.remove('text')

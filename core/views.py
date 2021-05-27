@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from core.engine.validate_form import is_valid, country_uf
+from core.engine.commit import commit
 from core.models import Enderecos
 
 
@@ -30,6 +31,7 @@ def cadastro(request):
         if is_valid(form_fields):
             new_endereco = Enderecos(**form_fields)
             new_endereco.save()
+            commit()
             request.method = 'GET'
             return redirect(index)
         else:
